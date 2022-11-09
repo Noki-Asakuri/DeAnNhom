@@ -19,4 +19,5 @@
 MIT License.
 
 Vui lòng ghi nguồn nếu bạn có ý định sử dụng ở nơi khác.
+
 Đọc thêm ở [LICENSE](./LICENSE) để biết thêm chi tiết.
