@@ -12,20 +12,19 @@ namespace DeAnNhom.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderPro
+    public partial class Seller
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OrderPro()
+        public Seller()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
+            this.Products = new HashSet<Product>();
         }
     
-        public int OrderID { get; set; }
-        public System.DateTime DateOrder { get; set; }
-        public string CustomerID { get; set; }
+        public string SellerID { get; set; }
+        public string ShopName { get; set; }
     
-        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual User User { get; set; }
     }
 }

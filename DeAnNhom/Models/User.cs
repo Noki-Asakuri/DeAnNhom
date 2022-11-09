@@ -17,18 +17,35 @@ namespace DeAnNhom.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.OrderProes = new HashSet<OrderPro>();
+            this.UserClaims = new HashSet<UserClaim>();
+            this.UserLogins = new HashSet<UserLogin>();
+            this.UserRoles = new HashSet<UserRole>();
         }
     
-        public int UserID { get; set; }
-        public string Name { get; set; }
+        public string UserID { get; set; }
+        public string UserName { get; set; }
+        public string ProfileImg { get; set; }
+        public Nullable<bool> Genders { get; set; }
+        public Nullable<System.DateTime> JoinedDate { get; set; }
         public string Email { get; set; }
-        public string PhoneNum { get; set; }
-        public string Password { get; set; }
-        public string Address { get; set; }
-        public string Role { get; set; }
+        public string PhoneNumber { get; set; }
+        public string PasswordHash { get; set; }
+        public string SecurityStamp { get; set; }
+        public bool EmailConfirmed { get; set; }
+        public bool PhoneNumberConfirmed { get; set; }
+        public bool TwoFactorEnabled { get; set; }
+        public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
+        public bool LockoutEnabled { get; set; }
+        public int AccessFailedCount { get; set; }
+        public string Discriminator { get; set; }
     
+        public virtual Customer Customer { get; set; }
+        public virtual Seller Seller { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderPro> OrderProes { get; set; }
+        public virtual ICollection<UserClaim> UserClaims { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserLogin> UserLogins { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

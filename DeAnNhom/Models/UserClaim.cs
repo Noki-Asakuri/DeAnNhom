@@ -12,16 +12,14 @@ namespace DeAnNhom.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class UserClaim
     {
-        public int ID { get; set; }
-        public int ProductID { get; set; }
-        public int OrderID { get; set; }
-        public int Quantity { get; set; }
-        public double UnitPrice { get; set; }
-        public string Sizes { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+        public string IdentityUser_Id { get; set; }
     
-        public virtual OrderPro OrderPro { get; set; }
-        public virtual Product Product { get; set; }
+        public virtual User User { get; set; }
     }
 }
