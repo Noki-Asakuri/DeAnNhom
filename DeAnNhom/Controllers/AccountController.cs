@@ -311,6 +311,28 @@ namespace DeAnNhom.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(UpdateInfoViewModel model)
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (model.NewEmail != null)
+            {
+                UserManager.SetEmail(user.Id, model.NewEmail);
+            }
+            else if (model.NewPassword != null)
+            {
+                UserManager.ChangePassword(user.Id, model.CurrentPassword, model.NewPassword);
+            }
+            else if (model.NewPhone != null)
+            {
+                var token = UserManager.GenerateChangePhoneNumberToken(user.Id, model.NewPhone);
+                UserManager.ChangePhoneNumber(user.Id, model.NewPhone, token);
+            }
+
+            return RedirectToAction("Profile");
+        }
+
         public ActionResult Purchase()
         {
             string userID = User.Identity.GetUserId();
